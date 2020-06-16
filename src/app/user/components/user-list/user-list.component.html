@@ -1,0 +1,32 @@
+<h3>User List</h3>
+<table class='table table-striped' aria-labelledby="tableLabel" *ngIf="users">
+  <thead>
+  <tr>
+    <th>Name</th>
+    <th>Address</th>
+    <th>Email</th>
+    <th>Phone</th>
+    <th>Admin</th>
+  </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let user of users">
+      <td>
+        {{ user.name.first }}<br/>
+        {{ user.name.middle }}<br/>
+        {{ user.name.last }}
+      </td>
+      <td>
+        {{ user.address.street1 }}<br/>
+        {{ user.address.street2 }}<br/>
+        {{ user.address.city }}<br/>
+        {{ user.address.state }}<br/>
+        {{ user.address.zip }}
+      </td>
+      <td>{{ user.email }}</td>
+      <td>{{ user.phone }}</td>
+      <td>{{ user.isAdmin }}</td>
+    </tr>
+  </tbody>
+</table>
+<h3 class="text-danger" *ngIf="error">{{error}}</h3>

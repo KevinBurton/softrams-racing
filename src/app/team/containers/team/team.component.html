@@ -1,0 +1,10 @@
+<div>
+  <app-team-list
+    [teams]="teams$ | async"
+    [currentUser]="currentUser$ | async"
+    [isLoggedOn]="isLoggedOn$ | async"
+    [error]="error$ | async"
+    (removeTeam)="removeTeam($event)"
+    (addTeam)="addTeam($event)">
+  </app-team-list>
+</div>

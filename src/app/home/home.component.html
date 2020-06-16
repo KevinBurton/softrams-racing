@@ -1,0 +1,4 @@
+<app-banner></app-banner>
+<app-login *ngIf="!(isLoggedOn$ | async)" ></app-login>
+<app-member *ngIf="isLoggedOn$ | async" ></app-member>
+

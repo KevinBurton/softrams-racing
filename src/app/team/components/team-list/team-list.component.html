@@ -1,0 +1,17 @@
+<h3>Team List</h3>
+<button (click)='addTeamNotification()' *ngIf="isLoggedOn">Add</button>
+<table class='table table-striped' aria-labelledby="tableLabel" *ngIf="teams">
+  <thead>
+  <tr>
+    <th>Name</th>
+    <th></th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr *ngFor="let team of teams">
+    <td>{{ team.teamName }}</td>
+    <td><button (click)='removeTeamNotification(team)' *ngIf="isLoggedOn">Remove</button></td>
+  </tr>
+  </tbody>
+</table>
+<h3 class="text-danger" *ngIf="error">{{error}}</h3>

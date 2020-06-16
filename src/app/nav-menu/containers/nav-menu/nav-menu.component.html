@@ -1,0 +1,7 @@
+<app-nav-menu-display
+    [isLoggedOn]="isLoggedOn$ | async"
+    [currentUser]="currentUser$ | async"
+    [error]="error$ | async"
+    (logout)="logout()">
+</app-nav-menu-display>
+

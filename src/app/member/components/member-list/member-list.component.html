@@ -1,0 +1,23 @@
+<h3>Member List</h3>
+<button (click)='addMemberNotification()' *ngIf="isLoggedOn">Add</button>
+<table class='table table-striped' aria-labelledby="tableLabel" *ngIf="members">
+  <thead>
+  <tr>
+    <th>Name</th>
+    <th>Job Title</th>
+    <th>Team</th>
+    <th>Status</th>
+    <th></th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr *ngFor="let member of members">
+    <td>{{ member.lastName }}, {{ member.firstName }}</td>
+    <td>{{ member.jobTitle }}</td>
+    <td>{{ member.team }}</td>
+    <td>{{ member.status }}</td>
+    <td><button (click)='deleteMemberNotification(member)' *ngIf="isLoggedOn">Remove</button></td>
+  </tr>
+  </tbody>
+</table>
+<h3 class="text-danger" *ngIf="error">{{error}}</h3>

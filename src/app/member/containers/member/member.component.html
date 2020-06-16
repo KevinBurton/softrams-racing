@@ -1,0 +1,10 @@
+<div>
+  <app-member-list
+    [members]="members$ | async"
+    [currentUser]="currentUser$ | async"
+    [isLoggedOn]="isLoggedOn$ | async"
+    [error]="error$ | async"
+    (deleteMember)="deleteMember($event)"
+    (addMember)="addMember($event)">
+  </app-member-list>
+</div>
