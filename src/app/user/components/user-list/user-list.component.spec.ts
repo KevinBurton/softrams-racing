@@ -55,12 +55,12 @@ describe('UserListComponent', () => {
   it('pass users (cell)', () => {
     fixture.detectChanges();
     const tableCells = fixture.nativeElement.querySelectorAll('table tbody tr td');
-    expect(tableCells.length).toEqual(15);
+    expect(tableCells.length).toEqual(3);
   });
   it('pass users (filter)', () => {
     fixture.detectChanges();
-    const tableCells = [...fixture.nativeElement.querySelectorAll('table tbody tr td')];
-    const filteredCells = tableCells.filter((c, i) => i % 5 === 0);
+    const tableArray = Array.prototype.slice.call(fixture.nativeElement.querySelectorAll('table tbody tr td'));
+    const filteredCells = tableArray.filter((c, i) => i % 1 === 0);
     expect(filteredCells.length).toEqual(3);
   });
 });

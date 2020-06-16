@@ -1,5 +1,9 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { ReactiveFormsModule } from '@angular/forms';
+import { RouterTestingModule } from '@angular/router/testing';
+import { provideMockStore, MockStore } from '@ngrx/store/testing';
+import { HttpClient, HttpHandler } from '@angular/common/http';
+import { Router } from '@angular/router';
 
 import { HomeComponent } from './home.component';
 import { BannerComponent } from '../banner/banner.component'
@@ -13,6 +17,16 @@ describe('HomeComponent', () => {
   let fixture: ComponentFixture<HomeComponent>;
 
   beforeEach(async(() => {
+    const initialState = {
+      member: {
+        list: [],
+        error: ''
+      },
+      team: {
+        list: [],
+        error: ''
+      }
+    };
     TestBed.configureTestingModule({
       declarations: [ BannerComponent, 
                       MemberComponent,
@@ -20,7 +34,10 @@ describe('HomeComponent', () => {
                       LoginComponent,
                       LoginDisplayComponent,
                       HomeComponent ],
-      imports: [ReactiveFormsModule]
+      imports: [ RouterTestingModule, ReactiveFormsModule ],
+      providers: [ HttpClient, 
+                   HttpHandler,
+                   provideMockStore({ initialState }) ]
     })
     .compileComponents();
   }));

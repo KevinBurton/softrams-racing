@@ -1,4 +1,5 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { ReactiveFormsModule } from '@angular/forms';
 
 import { AddMemberDisplayComponent } from './add-member-display.component';
 
@@ -8,7 +9,8 @@ describe('AddMemberDisplayComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ AddMemberDisplayComponent ]
+      declarations: [ AddMemberDisplayComponent ],
+      imports: [ReactiveFormsModule]
     })
     .compileComponents();
   }));

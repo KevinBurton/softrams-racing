@@ -54,14 +54,38 @@ app.get('/api/teams', (req, res) => {
 });
 
 // Submit Form!
-app.post('/api/addMember', (req, res) => {
-
+app.post('/api/members', (req, res) => {
+  request.post({
+    headers: {'content-type': 'application/json'},
+    url: 'http://localhost:3000/members',
+    form: req.body
+  }, function(error, response, body){
+    if(error) {
+      console.log(error);
+      res.sendStatus(500);
+    }
+    res.send(body);
+  });
 });
-app.post('/api/addTeam', (req, res) => {
-
+app.post('/api/teams', (req, res) => {
+  request.post({
+    headers: {'content-type': 'application/json'},
+    url: 'http://localhost:3000/teams',
+    form: req.body
+  }, function(error, response, body){
+    if(error) {
+      console.log(error);
+      res.sendStatus(500);
+    }
+    res.send(body);
+  });
 });
 
-app.get('*', (req, res) => {
+app.delete('/api/members', (req,res) => {
+  console.log(req.uri);
+});
+
+app.get('*', (req,res) => {
   res.sendFile(path.join(__dirname, 'dist/softrams-racing/index.html'));
 });
 

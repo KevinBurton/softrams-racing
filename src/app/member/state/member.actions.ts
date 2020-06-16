@@ -5,8 +5,12 @@ export enum MemberActionTypes {
     SetMembers = '[Member] Set the member list',
     LoadMembers = '[Member] Initiate load of members from DB',
     LoadMembersSuccess = '[Member] Successfull load of members',
-    LoadMembersFail = '[Member] Load members failed'
-}
+    LoadMembersFail = '[Member] Load members failed',
+    AddMember = '[Member] Add member',
+    AddMemberSuccess = '[Member] SUccessfully added member',
+    AddMemberFail = '[Member] Add member failed',
+    DeleteMember = '[Member] Delete member by id'
+,  }
 
 export class SetMembers implements Action {
     readonly type = MemberActionTypes.SetMembers;
@@ -26,7 +30,28 @@ export class LoadMembersFail implements Action {
   constructor(public payload: string) {}
 }
 
+export class AddMember implements Action {
+  readonly type = MemberActionTypes.AddMember;
+  constructor(public payload: Member) {}
+}
+export class AddMemberSuccess implements Action {
+  readonly type = MemberActionTypes.AddMemberSuccess;
+  constructor(public payload: Member) {}
+}
+export class AddMemberFail implements Action {
+  readonly type = MemberActionTypes.AddMemberFail;
+  constructor(public payload: string) {}
+}
+export class DeleteMember implements Action {
+  readonly type = MemberActionTypes.DeleteMember;
+  constructor(public payload: number) {}
+}
+
 export type MemberActions = SetMembers |
                              LoadMembers |
                              LoadMembersSuccess |
-                             LoadMembersFail;
+                             LoadMembersFail |
+                             AddMember |
+                             AddMemberSuccess |
+                             AddMemberFail | 
+                             DeleteMember;

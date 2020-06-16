@@ -43,6 +43,24 @@ export function memberReducer(state = initialState, action: MemberActions): Memb
           list: [],
           error: action.payload
         };
+
+      case MemberActionTypes.AddMember:
+        return {
+          ...state,
+          list: [...state.list, action.payload]
+        }
+      case MemberActionTypes.AddMemberSuccess:
+        return {
+          ...state,
+          list: [...state.list,action.payload],
+          error: ''
+        };
+      case MemberActionTypes.AddMemberFail:
+        return {
+          ...state,
+          list: [],
+          error: action.payload
+        };
       default:
         return state;
     }

@@ -8,7 +8,7 @@
 <div class="container-fluid">
   <div class="row">
     <div class="col-12">
-      <p *ngIf="appService.username" class="welcome">Welcome {{ appService.username }}, <span (click)="logout()" class="logout text-primary">logout here</span></p>
+      <p *ngIf="isLoggedOn$ | async" class="welcome">Welcome {{  currentUser.name.first }}, <span (click)="logout()" class="logout text-primary">logout here</span></p>
     </div>
   </div>
 </div>

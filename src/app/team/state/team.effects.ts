@@ -13,14 +13,14 @@ import * as teamActions from './team.actions';
 @Injectable()
 export class TeamEffects {
 
-  constructor(private productService: TeamService,
+  constructor(private teamService: TeamService,
               private actions$: Actions) { }
 
   @Effect()
-  loadProducts$: Observable<Action> = this.actions$.pipe(
+  loadTeams$: Observable<Action> = this.actions$.pipe(
     ofType(teamActions.TeamActionTypes.LoadTeams),
     mergeMap(action =>
-      this.productService.getTeams().pipe(
+      this.teamService.getTeams().pipe(
         map(teams => (new teamActions.LoadTeamsSuccess(teams))),
         catchError(err => of(new teamActions.LoadTeamsFail(err)))
       )

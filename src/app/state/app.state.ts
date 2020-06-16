@@ -1,5 +1,5 @@
-import { MemberState } from '../member/state/member.reducer';
+import { UserState } from '../user/state/user.reducer';
 
 export interface State {
-  members: MemberState;
+  user: UserState;
 }

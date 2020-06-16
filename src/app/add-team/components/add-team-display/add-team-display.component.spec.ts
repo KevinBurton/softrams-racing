@@ -1,4 +1,5 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { ReactiveFormsModule } from '@angular/forms';
 
 import { AddTeamDisplayComponent } from './add-team-display.component';
 
@@ -8,7 +9,8 @@ describe('AddTeamDisplayComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ AddTeamDisplayComponent ]
+      declarations: [ AddTeamDisplayComponent ],
+      imports: [ReactiveFormsModule]
     })
     .compileComponents();
   }));

@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 
 import { Observable, of } from 'rxjs';
-import { mergeMap, map, catchError } from 'rxjs/operators';
+import { switchMap, mergeMap, map, catchError } from 'rxjs/operators';
 
 import { MemberService } from '../../services/member.service';
 
@@ -17,14 +17,33 @@ export class MemberEffects {
               private actions$: Actions) { }
 
   @Effect()
-  loadProducts$: Observable<Action> = this.actions$.pipe(
+  loadMembers$: Observable<Action> = this.actions$.pipe(
     ofType(memberActions.MemberActionTypes.LoadMembers),
     mergeMap(action =>
       this.memberService.getMembers().pipe(
-        map(products => (new memberActions.LoadMembersSuccess(products))),
+        map(members => (new memberActions.LoadMembersSuccess(members))),
         catchError(err => of(new memberActions.LoadMembersFail(err)))
       )
     )
   );
-
+  @Effect()
+  addMember$: Observable<Action> = this.actions$.pipe(
+    ofType<memberActions.AddMember>(memberActions.MemberActionTypes.AddMember),
+    switchMap((action) =>
+      this.memberService.addMember(action.payload).pipe(
+        map(member => (new memberActions.AddMemberSuccess(member))),
+        catchError(err => of(new memberActions.AddMemberFail(err)))
+      )
+    )
+  );
+  @Effect()
+  deleteMember$: Observable<Action> = this.actions$.pipe(
+    ofType<memberActions.DeleteMember>(memberActions.MemberActionTypes.DeleteMember),
+    switchMap((action) =>
+      this.memberService.deleteMember(action.payload).pipe(
+        map(member => (new memberActions.AddMemberSuccess(member))),
+        catchError(err => of(new memberActions.AddMemberFail(err)))
+      )
+    )
+  );
 }

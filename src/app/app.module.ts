@@ -16,7 +16,7 @@ import { EffectsModule } from '@ngrx/effects';
 import { BannerComponent } from './banner/banner.component';
 import { NavMenuComponent } from './nav-menu/containers/nav-menu/nav-menu.component';
 import { NavMenuDisplayComponent } from './nav-menu/components/nav-menu-display/nav-menu-display.component';
-
+import { userReducer } from './user/state/user.reducer';
 @NgModule({
   declarations: [AppComponent,
                  HomeComponent,

@@ -6,11 +6,9 @@ import * as fromUser from '../../../user/state/user.reducer';
 import * as fromMember from '../../../member/state/member.reducer';
 import * as fromTeam from '../../../team/state/team.reducer';
 import { Store, select } from '@ngrx/store';
-import { User } from '../../../models/user';
 import { Observable } from 'rxjs';
-import { tap } from 'rxjs/operators';
 
-import * as memberActions from '../../../member/state/member.actions';
+import * as teamActions from '../../../team/state/team.actions';
 
 @Component({
   selector: 'app-add-member',
@@ -27,13 +25,10 @@ export class AddMemberComponent implements OnInit {
               private memberStore: Store<fromMember.MemberState>,
               private teamStore: Store<fromTeam.TeamState>) { }
 
-  errorMessage = '';
-
   ngOnInit() {
+    this.teamStore.dispatch(new teamActions.LoadTeams());
     this.members$ = this.memberStore.pipe(select(fromMember.getMembers));
     this.teams$ = this.teamStore.pipe(select(fromTeam.getTeams));
-    this.isLoggedOn$ = this.userStore.pipe(tap((data) => console.log(`Statusr: ${data.user.isLoggedOn}`)),
-                                           select(fromUser.getStatus));
-
+    this.isLoggedOn$ = this.userStore.pipe(select(fromUser.getStatus));
   }
 }

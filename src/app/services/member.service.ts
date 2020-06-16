@@ -26,12 +26,30 @@ export class MemberService {
       const url = `${this.env.apiBase}/api/members/${id}`;
       return this.http.get<Member>(url).pipe(
           tap((data) => {
-            console.log(`Member: ${data}`);
+            console.log(`Get Member by Id: ${data}`);
           }),
           catchError(this.handleError)
       );
-  }
-  private handleError(err: HttpErrorResponse): ObservableInput<any> {
+    }
+    public addMember(member: Member): Observable<Member> {
+        const url = `${this.env.apiBase}/api/members`;
+        return this.http.post(url, member).pipe(
+            tap((data) => {
+              console.log(`Add Member: ${data}`);
+            }),
+            catchError(this.handleError)
+        );
+      }
+      public deleteMember(memberId: number): Observable<Member> {
+        const url = `${this.env.apiBase}/api/members/${memberId}`;
+        return this.http.delete(url).pipe(
+            tap((data) => {
+              console.log(`Delete Member: ${data}`);
+            }),
+            catchError(this.handleError)
+        );
+      }
+    private handleError(err: HttpErrorResponse): ObservableInput<any> {
         let errorMessage = '';
         if (err.error instanceof ErrorEvent) {
             errorMessage = `An error occurred: ${err.error.message}`;

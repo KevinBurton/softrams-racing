@@ -1,4 +1,6 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { ReactiveFormsModule } from '@angular/forms';
+import { HttpClient } from '@angular/common/http';
 
 import { LoginDisplayComponent } from './login-display.component';
 
@@ -8,7 +10,9 @@ describe('LoginDisplayComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ LoginDisplayComponent ]
+      declarations: [ LoginDisplayComponent ],
+      imports: [ReactiveFormsModule],
+      providers: [ HttpClient ]
     })
     .compileComponents();
   }));

@@ -1,6 +1,5 @@
 import { Component, Input, Output, EventEmitter, ChangeDetectionStrategy } from '@angular/core';
 import { User } from 'src/app/models/user';
-import { Member } from 'src/app/models/member';
 
 @Component({
   selector: 'app-nav-menu-display',

@@ -25,15 +25,11 @@ export class MemberComponent implements OnInit {
               private userStore: Store<fromUser.State>,
               private memberStore: Store<fromMember.MemberState>) { }
 
-  errorMessage = '';
-
   ngOnInit() {
     this.memberStore.dispatch(new memberActions.LoadMembers());
     this.members$ = this.memberStore.pipe(select(fromMember.getMembers));
-    this.currentUser$ = this.userStore.pipe(tap((data) => console.log(`Current User: ${data.user.currentUser.name.first}`)),
-                                            select(fromUser.getCurrentUser));
-    this.isLoggedOn$ = this.userStore.pipe(tap((data) => console.log(`Statusr: ${data.user.isLoggedOn}`)),
-                                           select(fromUser.getStatus));
+    this.currentUser$ = this.userStore.pipe(select(fromUser.getCurrentUser));
+    this.isLoggedOn$ = this.userStore.pipe(select(fromUser.getStatus));
 
     this.error$ = this.memberStore.pipe(select(fromMember.getError));
 
