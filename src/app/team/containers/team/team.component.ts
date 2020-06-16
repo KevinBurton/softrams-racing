@@ -23,16 +23,12 @@ export class TeamComponent implements OnInit {
   constructor(private router: Router,
               private userStore: Store<fromUser.State>,
               private teamStore: Store<fromTeam.TeamState>) { }
-
-  errorMessage = '';
-
+ 
   ngOnInit() {
     this.teamStore.dispatch(new teamActions.LoadTeams());
     this.teams$ = this.teamStore.pipe(select(fromTeam.getTeams));
-    this.currentUser$ = this.userStore.pipe(tap((data) => console.log(`Current User: ${data.user.currentUser.name.first}`)),
-                                            select(fromUser.getCurrentUser));
-    this.isLoggedOn$ = this.userStore.pipe(tap((data) => console.log(`Status: ${data.user.isLoggedOn}`)),
-                                           select(fromUser.getStatus));
+    this.currentUser$ = this.userStore.pipe(select(fromUser.getCurrentUser));
+    this.isLoggedOn$ = this.userStore.pipe(select(fromUser.getStatus));
 
     this.error$ = this.teamStore.pipe(select(fromTeam.getError));
 

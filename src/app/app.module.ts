@@ -7,12 +7,12 @@ import { AppRoutingModule } from './app-routing.module';
 
 import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
+import { LoginModule } from './login/login.module';
 import { EnvServiceProvider } from './env.service.provider';
 import { StoreModule } from '@ngrx/store';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { environment } from '../environments/environment';
 import { EffectsModule } from '@ngrx/effects';
-import { LoginComponent } from './login/containers/login/login.component';
 import { BannerComponent } from './banner/banner.component';
 import { NavMenuComponent } from './nav-menu/containers/nav-menu/nav-menu.component';
 import { NavMenuDisplayComponent } from './nav-menu/components/nav-menu-display/nav-menu-display.component';
@@ -21,7 +21,6 @@ import { NavMenuDisplayComponent } from './nav-menu/components/nav-menu-display/
   declarations: [AppComponent,
                  HomeComponent,
                  BannerComponent,
-                 LoginComponent,
                  NavMenuComponent,
                  NavMenuDisplayComponent],
   imports: [
@@ -29,6 +28,7 @@ import { NavMenuDisplayComponent } from './nav-menu/components/nav-menu-display/
     SharedModule,
     HttpClientModule,
     AppRoutingModule,
+    LoginModule,
     MemberModule,
     StoreModule.forRoot({}, {
       runtimeChecks: {

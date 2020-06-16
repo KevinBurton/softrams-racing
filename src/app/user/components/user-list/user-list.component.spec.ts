@@ -1,9 +1,10 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { User } from '../../../models/user';
-
+import { UserModule } from '../../../user/user.module'
 import { UserListComponent } from './user-list.component';
 import { DebugElement } from '@angular/core';
 import { By } from '@angular/platform-browser';
+import { clear } from 'console';
 
 describe('UserListComponent', () => {
   let component: UserListComponent;
@@ -23,53 +24,20 @@ describe('UserListComponent', () => {
       {
         name: {
           first: 'John',
-          middle: 'Jay',
           last: 'Smith'
-        },
-        address: {
-          street1: '1 Easy Street',
-          street2: '',
-          city: 'Los Angeles',
-          state: 'California',
-          zip: '12345'
-        },
-        email: 'john@nocantack.com',
-        phone: '123 456-7890',
-        isAdmin: false
+        }
       },
       {
         name: {
           first: 'Sam',
-          middle: 'Jay',
           last: 'Jones'
-        },
-        address: {
-          street1: '2 Easy Street',
-          street2: '',
-          city: 'Los Angeles',
-          state: 'California',
-          zip: '12345'
-        },
-        email: 'sam@nocantack.com',
-        phone: '123 456-7890',
-        isAdmin: false
+        }
       },
       {
         name: {
           first: 'Harry',
-          middle: 'Jay',
           last: 'Johnson'
-        },
-        address: {
-          street1: '3 Easy Street',
-          street2: '',
-          city: 'Los Angeles',
-          state: 'California',
-          zip: '12345'
-        },
-        email: 'harry@nocantack.com',
-        phone: '123 456-7890',
-        isAdmin: false
+        }
       }
     ];
     component.error = '';

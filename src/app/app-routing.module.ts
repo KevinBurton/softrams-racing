@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
+import { LoginModule } from './login/login.module';
 import { UserModule } from './user/user.module';
 import { MemberModule } from './member/member.module';
 import { TeamModule } from './team/team.module';
@@ -21,6 +22,7 @@ const routes: Routes = [
   imports: [
     RouterModule.forRoot(routes),
     UserModule,
+    LoginModule,
     MemberModule,
     TeamModule,
     SharedModule

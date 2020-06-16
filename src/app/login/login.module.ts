@@ -11,6 +11,10 @@ import { LoginDisplayComponent } from './components/login-display/login-display.
   declarations: [
     LoginComponent,
     LoginDisplayComponent
+  ],
+  exports: [
+    LoginComponent,
+    LoginDisplayComponent
   ]
 })
 export class LoginModule { }
