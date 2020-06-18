@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 
 import { Observable, of } from 'rxjs';
-import { switchMap, mergeMap, map, catchError } from 'rxjs/operators';
+import { switchMap, mergeMap, map, tap, catchError } from 'rxjs/operators';
 
 import { MemberService } from '../../services/member.service';
 
@@ -36,13 +36,13 @@ export class MemberEffects {
       )
     )
   );
-  @Effect()
+  @Effect({ dispatch: false })
   deleteMember$: Observable<Action> = this.actions$.pipe(
     ofType<memberActions.DeleteMember>(memberActions.MemberActionTypes.DeleteMember),
     switchMap((action) =>
       this.memberService.deleteMember(action.payload).pipe(
-        map(member => (new memberActions.AddMemberSuccess(member))),
-        catchError(err => of(new memberActions.AddMemberFail(err)))
+        map(member => (new memberActions.DeleteMemberSuccess(member))),
+        catchError(err => of(new memberActions.DeleteMemberFail(err)))
       )
     )
   );

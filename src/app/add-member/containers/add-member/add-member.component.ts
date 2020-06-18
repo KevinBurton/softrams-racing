@@ -20,8 +20,7 @@ export class AddMemberComponent implements OnInit {
   teams$: Observable<Team[]>;
   isLoggedOn$: Observable<boolean>;
 
-  constructor(private router: Router,
-              private userStore: Store<fromUser.State>,
+  constructor(private userStore: Store<fromUser.UserState>,
               private memberStore: Store<fromMember.MemberState>,
               private teamStore: Store<fromTeam.TeamState>) { }
 

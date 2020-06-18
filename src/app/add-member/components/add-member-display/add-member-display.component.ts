@@ -6,20 +6,21 @@ import { Router } from '@angular/router';
 import * as fromMember from '../../../member/state/member.reducer';
 import * as memberActions from '../../../member/state/member.actions';
 
-import { Store, select } from '@ngrx/store';
+import { Store } from '@ngrx/store';
 import { Member } from 'src/app/models/member';
 import { Team } from 'src/app/models/team';
 
 @Component({
   selector: 'app-add-member-display',
   templateUrl: './add-member-display.component.html',
-  styleUrls: ['./add-member-display.component.css']
+  styleUrls: ['./add-member-display.component.css'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class AddMemberDisplayComponent  implements OnInit {
 
   constructor(private fb: FormBuilder,
               private memberStore: Store<fromMember.MemberState>,
-              private router: Router,) { }
+              private router: Router) { }
 
   private addMemberValidationMessages = {
     required: 'Please enter a value.',
@@ -76,10 +77,10 @@ export class AddMemberDisplayComponent  implements OnInit {
     }
   }
   submit() {
-    const maxId = this.members.map(member => parseInt(member.id)).reduce((acc, cur)  => {
+      const maxId = this.members.map(member => parseInt(member.id)).reduce((acc, cur)  => {
           return (cur > acc) ? cur : acc;
       });
-    const firstName = this.addMemberForm.get('firstName').value;
+  const firstName = this.addMemberForm.get('firstName').value;
     const lastName = this.addMemberForm.get('lastName').value;
     const jobTitle = this.addMemberForm.get('jobTitle').value;
     const team = this.addMemberForm.get('team').value;

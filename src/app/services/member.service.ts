@@ -34,13 +34,10 @@ export class MemberService {
     public addMember(member: Member): Observable<Member> {
         const url = `${this.env.apiBase}/api/members`;
         return this.http.post(url, member).pipe(
-            tap((data) => {
-              console.log(`Add Member: ${data}`);
-            }),
             catchError(this.handleError)
         );
       }
-      public deleteMember(memberId: number): Observable<Member> {
+      public deleteMember(memberId: number): Observable<number> {
         const url = `${this.env.apiBase}/api/members/${memberId}`;
         return this.http.delete(url).pipe(
             tap((data) => {

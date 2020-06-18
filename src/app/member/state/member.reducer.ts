@@ -61,6 +61,12 @@ export function memberReducer(state = initialState, action: MemberActions): Memb
           list: [],
           error: action.payload
         };
+      case MemberActionTypes.DeleteMember:
+        return {
+          ...state,
+          list: state.list.filter(m => parseInt(m.id) != action.payload),
+          error: ''
+        };
       default:
         return state;
     }

@@ -53,8 +53,7 @@
         </div>
       </div>
     </div>
-    <!--Disable if form is invalid-->
-    <button type="submit" class="btn btn-primary pull-right">
+    <button type="submit" class="btn btn-primary pull-right" [disabled]="!addMemberForm.valid">
       Save Member
     </button>
   </form>

@@ -2,7 +2,7 @@
   <h3 class="text-center lead">Add Racing Team</h3>
   <br />
   <form novalidate
-        (ngSubmit)="onSubmit(teamForm)"
+        (ngSubmit)="submit()"
         [formGroup]="addTeamForm">
     <div>
       <div class="row">
@@ -17,8 +17,7 @@
         </div>
       </div>
     </div>
-    <!--Disable if form is invalid-->
-    <button type="submit" class="btn btn-primary pull-right">
+    <button type="submit" class="btn btn-primary pull-right" [disabled]="!addTeamForm.valid">
       Save Team
     </button>
   </form>

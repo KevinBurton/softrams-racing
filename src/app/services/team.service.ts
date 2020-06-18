@@ -31,7 +31,25 @@ export class TeamService {
           catchError(this.handleError)
       );
   }
-  private handleError(err: HttpErrorResponse): ObservableInput<any> {
+  public addTeam(member: Team): Observable<Team> {
+    const url = `${this.env.apiBase}/api/teams`;
+    return this.http.post(url, member).pipe(
+        tap((data) => {
+          console.log(`Add Team: ${data}`);
+        }),
+        catchError(this.handleError)
+    );
+  }
+  public deleteTeam(teamId: number): Observable<number> {
+    const url = `${this.env.apiBase}/api/teams/${teamId}`;
+    return this.http.delete(url).pipe(
+        tap((data) => {
+          console.log(`Delete Team: ${data}`);
+        }),
+        catchError(this.handleError)
+    );
+  }
+private handleError(err: HttpErrorResponse): ObservableInput<any> {
         let errorMessage = '';
         if (err.error instanceof ErrorEvent) {
             errorMessage = `An error occurred: ${err.error.message}`;

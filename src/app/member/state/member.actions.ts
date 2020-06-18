@@ -9,8 +9,10 @@ export enum MemberActionTypes {
     AddMember = '[Member] Add member',
     AddMemberSuccess = '[Member] SUccessfully added member',
     AddMemberFail = '[Member] Add member failed',
-    DeleteMember = '[Member] Delete member by id'
-,  }
+    DeleteMember = '[Member] Delete member by id',
+    DeleteMemberSuccess = '[Member] Delete member sucess',
+    DeleteMemberFail = '[Member] Delete member failure'
+   }
 
 export class SetMembers implements Action {
     readonly type = MemberActionTypes.SetMembers;
@@ -45,6 +47,14 @@ export class AddMemberFail implements Action {
 export class DeleteMember implements Action {
   readonly type = MemberActionTypes.DeleteMember;
   constructor(public payload: number) {}
+}
+export class DeleteMemberSuccess implements Action {
+  readonly type = MemberActionTypes.DeleteMember;
+  constructor(public payload: number) {}
+}
+export class DeleteMemberFail implements Action {
+  readonly type = MemberActionTypes.DeleteMember;
+  constructor(public payload: string) {}
 }
 
 export type MemberActions = SetMembers |

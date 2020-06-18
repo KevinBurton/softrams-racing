@@ -20,15 +20,14 @@ export class AddTeamComponent implements OnInit {
   teams$: Observable<Team[]>;
   isLoggedOn$: Observable<boolean>;
 
-  constructor(private router: Router,
-              private userStore: Store<fromUser.State>,
+  constructor(private userStore: Store<fromUser.UserState>,
               private memberStore: Store<fromMember.MemberState>,
               private teamStore: Store<fromTeam.TeamState>) { }
 
   ngOnInit() {
     this.members$ = this.memberStore.pipe(select(fromMember.getMembers));
     this.teams$ = this.teamStore.pipe(select(fromTeam.getTeams));
-    this.isLoggedOn$ = this.userStore.pipe(tap((data) => console.log(`Statusr: ${data.user.isLoggedOn}`)),
+    this.isLoggedOn$ = this.userStore.pipe(tap((data) => console.log(`Statusr: ${data.isLoggedOn}`)),
                                            select(fromUser.getStatus));
 
   }

@@ -10,7 +10,7 @@
   <tbody>
   <tr *ngFor="let team of teams">
     <td>{{ team.teamName }}</td>
-    <td><button (click)='removeTeamNotification(team)' *ngIf="isLoggedOn">Remove</button></td>
+    <td><button (click)='removeTeamNotification(team.id)' *ngIf="isLoggedOn">Remove</button></td>
   </tr>
   </tbody>
 </table>

@@ -13,11 +13,11 @@ export class TeamListComponent {
   @Input() currentUser: User;
   @Input() isLoggedOn: boolean;
   @Input() error: string;
-  @Output() removeTeam = new EventEmitter<Team>();
+  @Output() removeTeam = new EventEmitter<number>();
   @Output() addTeam = new EventEmitter();
 
-  removeTeamNotification(value: Team): void {
-    this.removeTeam.emit(value);
+  removeTeamNotification(teamId: number): void {
+    this.removeTeam.emit(teamId);
   }
   addTeamNotification(): void {
     this.addTeam.emit();

@@ -81,8 +81,31 @@ app.post('/api/teams', (req, res) => {
   });
 });
 
-app.delete('/api/members', (req,res) => {
-  console.log(req.uri);
+app.delete('/api/members/:memberId', (req,res) => {
+  // TODO: Test Implementation
+  console.log(req.params.memberId);
+  console.log(req.url);
+  request.delete({
+    url: `http://localhost:3000/members/${req.params.memberId}`
+  }, function(error, response, body){
+    if(error) {
+      console.log(error);
+      res.sendStatus(500);
+    }
+    res.send(req.params.memberId);
+  });
+});
+app.delete('/api/teams/:teamId', (req,res) => {
+  // TODO: Test Implementation
+  request.delete({
+    url: `http://localhost:3000/teams/${req.params.teamId}`
+  }, function(error, response, body){
+    if(error) {
+      console.log(error);
+      res.sendStatus(500);
+    }
+    res.send(req.params.teamId);
+  });
 });
 
 app.get('*', (req,res) => {

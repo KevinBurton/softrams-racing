@@ -6,7 +6,6 @@ import * as fromTeam from '../../../team/state/team.reducer';
 import { Store, select } from '@ngrx/store';
 import { User } from '../../../models/user';
 import { Observable } from 'rxjs';
-import { tap } from 'rxjs/operators';
 
 import * as teamActions from '../../../team/state/team.actions';
 
@@ -33,7 +32,8 @@ export class TeamComponent implements OnInit {
     this.error$ = this.teamStore.pipe(select(fromTeam.getError));
 
   }
-  removeTeam(team: Team) {
+  removeTeam(teamId: number) {
+    this.teamStore.dispatch(new teamActions.DeleteTeam(teamId));
     this.router.navigate(['/teams']);
   }
   addTeam() {

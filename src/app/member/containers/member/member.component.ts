@@ -6,7 +6,6 @@ import * as fromMember from '../../../member/state/member.reducer';
 import { Store, select } from '@ngrx/store';
 import { User } from '../../../models/user';
 import { Observable } from 'rxjs';
-import { tap } from 'rxjs/operators';
 
 import * as memberActions from '../../../member/state/member.actions';
 
@@ -34,7 +33,8 @@ export class MemberComponent implements OnInit {
     this.error$ = this.memberStore.pipe(select(fromMember.getError));
 
   }
-  deleteMember(member: Member) {
+  deleteMember(memberId: number) {
+    this.memberStore.dispatch(new memberActions.DeleteMember(memberId));
     this.router.navigate(['/members']);
   }
   addMember() {
